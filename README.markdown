@@ -13,7 +13,7 @@ Adding this pod to your project using [CocoaPods](http://cocoapods.org) is a one
 pod 'GCOLaunchImageTransition'
 ```
 
-Now run `pod install` to have CocoaPods handle everything for you.
+Now run `pod install` to have CocoaPods handle everything for you.  
 Never heard of CocoaPods? Do yourself a favor and [check it out now](http://cocoapods.org).
 
 
@@ -56,6 +56,5 @@ I'm [Michael Sedlaczek](mailto:michael@gonecoding.com), [Gone Coding](http://gon
 
 ## License
 
-GCOLaunchImageTransition is released under the [New BSD License](http://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22Revised_BSD_License.22.2C_.22New_BSD_License.22.2C_or_.22Modified_BSD_License.22.29). For details see [LICENSE](https://github.com/gonecoding/GCOLaunchImageTransition/blob/master/LICENSE).
-
+GCOLaunchImageTransition is released under the [New BSD License](http://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22Revised_BSD_License.22.2C_.22New_BSD_License.22.2C_or_.22Modified_BSD_License.22.29). For details see [LICENSE](https://github.com/gonecoding/GCOLaunchImageTransition/blob/master/LICENSE).  
 This license requires attribution when redistributing the component as source code or in binary form.
