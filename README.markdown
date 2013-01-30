@@ -52,7 +52,7 @@ I absolutely appreciate any suggestions or improvements you may have in mind for
 
 I'm [Michael Sedlaczek](mailto:michael@gonecoding.com), [Gone Coding](http://gonecoding.com). Find me on Twitter: [@gonecoding](https://twitter.com/gonecoding)
 
-[!](https://dl.dropbox.com/u/46058288/Assets/gonecoding.com/logo_200px.png)
+![Gone Coding Logo](https://dl.dropbox.com/u/46058288/Assets/gonecoding.com/logo_200px.png)
 
 ## License
 
