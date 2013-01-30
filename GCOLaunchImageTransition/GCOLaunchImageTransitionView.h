@@ -1,5 +1,5 @@
 //
-//  GCOLaunchImageTransitionView.m
+//  GCOLaunchImageTransitionView.h
 //  GCOLaunchImageTransition
 //
 //  Copyright (c) 2013, Michael Sedlaczek, Gone Coding, http://gonecoding.com
