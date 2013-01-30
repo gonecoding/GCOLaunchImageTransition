@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.summary      = "Animates the transition from the launch image to the app's initial view controller on iOS."
   s.description  = "Includes customized animation delay and duration, triggering the transition via notification and display of an activity indicator."
   s.homepage     = "https://github.com/gonecoding/GCOLaunchImageTransition"
-  s.license      = 'BSD'
+  s.license      = 'New BSD License'
   s.author       = { "Michael Sedlaczek" => "michael@gonecoding.com" }
   s.source       = { :git => "https://github.com/gonecoding/GCOLaunchImageTransition.git", :tag => "0.1.0" }
   s.platform     = :ios, '5.0'
