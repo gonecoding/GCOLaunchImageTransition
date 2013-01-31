@@ -30,6 +30,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define GCOLaunchImageTransitionNearInfiniteDelay DBL_MAX
+
 extern NSString* const GCOLaunchImageTransitionHideNotification;
 
 typedef enum GCOLaunchImageTransitionAnimationStyle_

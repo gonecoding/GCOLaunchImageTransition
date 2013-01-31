@@ -51,7 +51,7 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
 
 + (void)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style
 {
-   [self transitionWithDelay:DBL_MAX duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
+   [self transitionWithDelay:GCOLaunchImageTransitionNearInfiniteDelay duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
 }
 
 + (void)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
