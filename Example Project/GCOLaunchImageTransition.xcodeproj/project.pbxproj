@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891AD48116BA065000981794 /* app_icon_1024px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47316BA065000981794 /* app_icon_1024px.png */; };
+		891AD48216BA065000981794 /* app_icon_114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47416BA065000981794 /* app_icon_114px.png */; };
+		891AD48316BA065000981794 /* app_icon_144px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47516BA065000981794 /* app_icon_144px.png */; };
+		891AD48416BA065000981794 /* app_icon_29px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47616BA065000981794 /* app_icon_29px.png */; };
+		891AD48516BA065000981794 /* app_icon_320px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47716BA065000981794 /* app_icon_320px.png */; };
+		891AD48616BA065000981794 /* app_icon_48px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47816BA065000981794 /* app_icon_48px.png */; };
+		891AD48716BA065000981794 /* app_icon_50px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47916BA065000981794 /* app_icon_50px.png */; };
+		891AD48816BA065000981794 /* app_icon_512px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47A16BA065000981794 /* app_icon_512px.png */; };
+		891AD48916BA065000981794 /* app_icon_57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47B16BA065000981794 /* app_icon_57px.png */; };
+		891AD48A16BA065000981794 /* app_icon_58px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47C16BA065000981794 /* app_icon_58px.png */; };
+		891AD48B16BA065000981794 /* app_icon_640px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47D16BA065000981794 /* app_icon_640px.png */; };
+		891AD48C16BA065000981794 /* app_icon_64px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47E16BA065000981794 /* app_icon_64px.png */; };
+		891AD48D16BA065000981794 /* app_icon_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD47F16BA065000981794 /* app_icon_72px.png */; };
+		891AD48E16BA065000981794 /* app_icon_96px.png in Resources */ = {isa = PBXBuildFile; fileRef = 891AD48016BA065000981794 /* app_icon_96px.png */; };
 		89BF348516B9611000A87582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BF348416B9611000A87582 /* UIKit.framework */; };
 		89BF348716B9611000A87582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BF348616B9611000A87582 /* Foundation.framework */; };
 		89BF348916B9611000A87582 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BF348816B9611000A87582 /* CoreGraphics.framework */; };
@@ -18,11 +32,24 @@
 		89BF349B16B9611000A87582 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BF349A16B9611000A87582 /* Default-568h@2x.png */; };
 		89BF349E16B9611000A87582 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BF349C16B9611000A87582 /* MainStoryboard_iPhone.storyboard */; };
 		89BF34A116B9611000A87582 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BF349F16B9611000A87582 /* MainStoryboard_iPad.storyboard */; };
-		89BF34A416B9611000A87582 /* GCOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BF34A316B9611000A87582 /* GCOViewController.m */; };
-		89BF34AC16B963D900A87582 /* GCOLaunchImageTransitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BF34AB16B963D900A87582 /* GCOLaunchImageTransitionView.m */; };
+		89BF34AC16B963D900A87582 /* GCOLaunchImageTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BF34AB16B963D900A87582 /* GCOLaunchImageTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		891AD47316BA065000981794 /* app_icon_1024px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_1024px.png; sourceTree = "<group>"; };
+		891AD47416BA065000981794 /* app_icon_114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_114px.png; sourceTree = "<group>"; };
+		891AD47516BA065000981794 /* app_icon_144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_144px.png; sourceTree = "<group>"; };
+		891AD47616BA065000981794 /* app_icon_29px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_29px.png; sourceTree = "<group>"; };
+		891AD47716BA065000981794 /* app_icon_320px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_320px.png; sourceTree = "<group>"; };
+		891AD47816BA065000981794 /* app_icon_48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_48px.png; sourceTree = "<group>"; };
+		891AD47916BA065000981794 /* app_icon_50px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_50px.png; sourceTree = "<group>"; };
+		891AD47A16BA065000981794 /* app_icon_512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_512px.png; sourceTree = "<group>"; };
+		891AD47B16BA065000981794 /* app_icon_57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_57px.png; sourceTree = "<group>"; };
+		891AD47C16BA065000981794 /* app_icon_58px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_58px.png; sourceTree = "<group>"; };
+		891AD47D16BA065000981794 /* app_icon_640px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_640px.png; sourceTree = "<group>"; };
+		891AD47E16BA065000981794 /* app_icon_64px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_64px.png; sourceTree = "<group>"; };
+		891AD47F16BA065000981794 /* app_icon_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_72px.png; sourceTree = "<group>"; };
+		891AD48016BA065000981794 /* app_icon_96px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon_96px.png; sourceTree = "<group>"; };
 		89BF348116B9611000A87582 /* GCOLaunchImageTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCOLaunchImageTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BF348416B9611000A87582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89BF348616B9611000A87582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,10 +65,8 @@
 		89BF349A16B9611000A87582 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		89BF349D16B9611000A87582 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		89BF34A016B9611000A87582 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		89BF34A216B9611000A87582 /* GCOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCOViewController.h; sourceTree = "<group>"; };
-		89BF34A316B9611000A87582 /* GCOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCOViewController.m; sourceTree = "<group>"; };
-		89BF34AA16B963D900A87582 /* GCOLaunchImageTransitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCOLaunchImageTransitionView.h; path = ../../GCOLaunchImageTransition/GCOLaunchImageTransitionView.h; sourceTree = "<group>"; };
-		89BF34AB16B963D900A87582 /* GCOLaunchImageTransitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCOLaunchImageTransitionView.m; path = ../../GCOLaunchImageTransition/GCOLaunchImageTransitionView.m; sourceTree = "<group>"; };
+		89BF34AA16B963D900A87582 /* GCOLaunchImageTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCOLaunchImageTransition.h; path = ../../GCOLaunchImageTransition/GCOLaunchImageTransition.h; sourceTree = "<group>"; };
+		89BF34AB16B963D900A87582 /* GCOLaunchImageTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCOLaunchImageTransition.m; path = ../../GCOLaunchImageTransition/GCOLaunchImageTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +83,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		891AD47216BA065000981794 /* iOS Icon Set */ = {
+			isa = PBXGroup;
+			children = (
+				891AD47316BA065000981794 /* app_icon_1024px.png */,
+				891AD47416BA065000981794 /* app_icon_114px.png */,
+				891AD47516BA065000981794 /* app_icon_144px.png */,
+				891AD47616BA065000981794 /* app_icon_29px.png */,
+				891AD47716BA065000981794 /* app_icon_320px.png */,
+				891AD47816BA065000981794 /* app_icon_48px.png */,
+				891AD47916BA065000981794 /* app_icon_50px.png */,
+				891AD47A16BA065000981794 /* app_icon_512px.png */,
+				891AD47B16BA065000981794 /* app_icon_57px.png */,
+				891AD47C16BA065000981794 /* app_icon_58px.png */,
+				891AD47D16BA065000981794 /* app_icon_640px.png */,
+				891AD47E16BA065000981794 /* app_icon_64px.png */,
+				891AD47F16BA065000981794 /* app_icon_72px.png */,
+				891AD48016BA065000981794 /* app_icon_96px.png */,
+			);
+			path = "iOS Icon Set";
+			sourceTree = "<group>";
+		};
 		89BF347816B9611000A87582 = {
 			isa = PBXGroup;
 			children = (
@@ -92,10 +138,8 @@
 				89BF349416B9611000A87582 /* GCOAppDelegate.m */,
 				89BF349C16B9611000A87582 /* MainStoryboard_iPhone.storyboard */,
 				89BF349F16B9611000A87582 /* MainStoryboard_iPad.storyboard */,
-				89BF34A216B9611000A87582 /* GCOViewController.h */,
-				89BF34A316B9611000A87582 /* GCOViewController.m */,
-				89BF34AA16B963D900A87582 /* GCOLaunchImageTransitionView.h */,
-				89BF34AB16B963D900A87582 /* GCOLaunchImageTransitionView.m */,
+				89BF34AA16B963D900A87582 /* GCOLaunchImageTransition.h */,
+				89BF34AB16B963D900A87582 /* GCOLaunchImageTransition.m */,
 				89BF348B16B9611000A87582 /* Supporting Files */,
 			);
 			path = GCOLaunchImageTransition;
@@ -111,6 +155,7 @@
 				89BF349616B9611000A87582 /* Default.png */,
 				89BF349816B9611000A87582 /* Default@2x.png */,
 				89BF349A16B9611000A87582 /* Default-568h@2x.png */,
+				891AD47216BA065000981794 /* iOS Icon Set */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -173,6 +218,20 @@
 				89BF349B16B9611000A87582 /* Default-568h@2x.png in Resources */,
 				89BF349E16B9611000A87582 /* MainStoryboard_iPhone.storyboard in Resources */,
 				89BF34A116B9611000A87582 /* MainStoryboard_iPad.storyboard in Resources */,
+				891AD48116BA065000981794 /* app_icon_1024px.png in Resources */,
+				891AD48216BA065000981794 /* app_icon_114px.png in Resources */,
+				891AD48316BA065000981794 /* app_icon_144px.png in Resources */,
+				891AD48416BA065000981794 /* app_icon_29px.png in Resources */,
+				891AD48516BA065000981794 /* app_icon_320px.png in Resources */,
+				891AD48616BA065000981794 /* app_icon_48px.png in Resources */,
+				891AD48716BA065000981794 /* app_icon_50px.png in Resources */,
+				891AD48816BA065000981794 /* app_icon_512px.png in Resources */,
+				891AD48916BA065000981794 /* app_icon_57px.png in Resources */,
+				891AD48A16BA065000981794 /* app_icon_58px.png in Resources */,
+				891AD48B16BA065000981794 /* app_icon_640px.png in Resources */,
+				891AD48C16BA065000981794 /* app_icon_64px.png in Resources */,
+				891AD48D16BA065000981794 /* app_icon_72px.png in Resources */,
+				891AD48E16BA065000981794 /* app_icon_96px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +244,7 @@
 			files = (
 				89BF349116B9611000A87582 /* main.m in Sources */,
 				89BF349516B9611000A87582 /* GCOAppDelegate.m in Sources */,
-				89BF34A416B9611000A87582 /* GCOViewController.m in Sources */,
-				89BF34AC16B963D900A87582 /* GCOLaunchImageTransitionView.m in Sources */,
+				89BF34AC16B963D900A87582 /* GCOLaunchImageTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
