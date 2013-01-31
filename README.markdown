@@ -5,6 +5,18 @@ Animates the transition from the launch image to the app's initial view controll
 If you're using this pod or found it somehow useful, I'd be happy if you'd [let me know](mailto:michael@gonecoding.com).
 
 
+## Features
+
+- Use one of three animations to create a nice transition from your launch image to your app:
+ - Fade
+ - Zoom In (with Fade)
+ - Zoom Out (with Fade)
+- Choose a custom delay before the animation begins
+- Choose a custom duration for the animation effect
+- Easily add an activity indicator with custom position and style
+- Dismiss the transition manually by posting a notification
+
+
 ## Installation via CocoaPods
 
 Adding this pod to your project using [CocoaPods](http://cocoapods.org) is a one-liner in your Podfile:
@@ -19,25 +31,60 @@ Never heard of CocoaPods? Do yourself a favor and [check it out now](http://coco
 
 ## Usage
 
-Add this code to your app's initial (root) view controller:
+The easiest way is to add the following code to your app delegate (e. g. AppDelegate.m):
 
 ```objective-c
-#import <GCOLaunchImageTransition/GCOLaunchImageTransitionView.h>
+#import <GCOLaunchImageTransition/GCOLaunchImageTransition.h>
 
-- (void)viewDidLoad
+- (void)applicationDidBecomeActive:(UIApplication *)application
 {
-   [super viewDidLoad];
-
    [...]
 
-   // Add transition from launch image to this controller's view
-   GCOLaunchImageTransitionView* launchTransitionView = [[GCOLaunchImageTransitionView alloc] initWithAnimationDelay:3.0 animationDuration:1.0 animationOptions:UIViewAnimationOptionCurveEaseInOut];
-   [self.view addSubview:launchTransitionView];
+   // Add transition from the launch image to the root view controller's view
+   [GCOLaunchImageTransition transitionWithDuration:0.5 style:GCOLaunchImageTransitionAnimationStyleZoomIn];
 }
 ```
 
-Make sure that adding these lines are *the last thing you do* in your controller's `-viewDidLoad` method.
+Don't worry, although this code is being added to `-applicationDidBecomeActive` the code for creating the transition is only executed once — Grand Central Dispatch sees to that with its `dispatch_once()` method.
 
+You can also create a transition with a (near-)infinite delay that can be dismissed at a specific point by posting a notification:
+
+```objective-c
+#import <GCOLaunchImageTransition/GCOLaunchImageTransition.h>
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+   [...]
+
+   // Create transition with an near-infinite delay that requires manual dismissal via notification
+   [GCOLaunchImageTransition transitionWithInfiniteDelayAndDuration:0.5 style:GCOLaunchImageTransitionAnimationStyleFade];
+}
+
+// At some point within your app's startup code dismiss the transition by posting a notification
+
+- (void)someStartupProcedureDidFinish
+{
+   [[NSNotificationCenter defaultCenter] postNotificationName:GCOLaunchImageTransitionHideNotification object:self];
+}
+```
+
+Finally you can add an activity indicator to the launch image transition using the fully customizable transition creation:
+
+```objective-c
+#import <GCOLaunchImageTransition/GCOLaunchImageTransition.h>
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+   [...]
+
+   // Create fully customizable transition including an optional activity indicator
+   // The 'activityIndicatorPosition' is a percentage value ('CGPointMake( 0.5, 0.5 )' being the center)
+
+   [GCOLaunchImageTransition transitionWithDelay:5.0 duration:0.5 style:GCOLaunchImageTransitionAnimationStyleZoomOut activityIndicatorPosition:CGPointMake( 0.5, 0.9 ) activityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+}
+```
+
+Note: You can always use `GCOLaunchImageTransitionNearInfiniteDelay` for the delay parameter if you prefer to dismiss the transition manually. 
 
 ## ARC Compatibility
 
