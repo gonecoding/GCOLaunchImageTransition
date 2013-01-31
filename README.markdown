@@ -17,6 +17,13 @@ If you're using this pod or found it somehow useful, I'd be happy if you'd [let 
 - Dismiss the transition manually by posting a notification
 
 
+## Example project
+
+To see this pod in action before using it in your project you should download the repository and have a look at the example project that's included.
+
+[Download repository as ZIP archive](https://github.com/gonecoding/GCOLaunchImageTransition/archive/master.zip)
+
+
 ## Installation via CocoaPods
 
 Adding this pod to your project using [CocoaPods](http://cocoapods.org) is a one-liner in your Podfile:
