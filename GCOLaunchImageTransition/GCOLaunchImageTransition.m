@@ -39,6 +39,7 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
 @property( nonatomic, assign ) GCOLaunchImageTransitionAnimationStyle style;
 
 @property( nonatomic, strong ) UIImageView* imageView;
+@property( nonatomic, strong ) UIActivityIndicatorView* activityIndicatorView;
 
 @end
 
@@ -89,14 +90,14 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
       // Add activity indicator view
       if( !CGPointEqualToPoint( activityIndicatorPosition, CGPointZero) )
       {
-         UIActivityIndicatorView* activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:activityIndicatorStyle];
+         self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:activityIndicatorStyle];
          
          CGSize size = self.imageView.bounds.size;
-         activityIndicatorView.center = CGPointMake( size.width * activityIndicatorPosition.x, size.height * activityIndicatorPosition.y );
+         self.activityIndicatorView.center = CGPointMake( size.width * activityIndicatorPosition.x, size.height * activityIndicatorPosition.y );
          
-         [self.imageView addSubview:activityIndicatorView];
+         [self.imageView addSubview:self.activityIndicatorView];
          
-         [activityIndicatorView startAnimating];
+         [self.activityIndicatorView startAnimating];
       }
       
       // Start transition animation with given delay
@@ -115,6 +116,11 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
 
 - (void)performViewAnimations
 {
+   if( self.activityIndicatorView )
+   {
+      [self.activityIndicatorView stopAnimating];
+   }
+   
    [UIView animateWithDuration:self.duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^
     {
        self.imageView.alpha = 0.0;
