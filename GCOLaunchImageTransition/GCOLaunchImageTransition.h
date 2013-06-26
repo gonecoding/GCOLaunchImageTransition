@@ -33,6 +33,9 @@
 #define GCOLaunchImageTransitionNearInfiniteDelay DBL_MAX
 
 extern NSString* const GCOLaunchImageTransitionHideNotification;
+extern NSString* const GCOLaunchImageTransitionProgressNotification;
+extern NSString* const GCOLaunchImageTransitionProgressValue;
+extern NSString* const GCOLaunchImageTransitionProgressText;
 
 typedef enum GCOLaunchImageTransitionAnimationStyle_
 {
@@ -43,19 +46,25 @@ typedef enum GCOLaunchImageTransitionAnimationStyle_
 
 @interface GCOLaunchImageTransition : NSObject
 
+@property( nonatomic, strong ) UIProgressView* progressView;
+
+@property( nonatomic, strong ) UILabel* progressLabel;
+
 // Create transition with a given style that begins immediately
 
-+ (void)transitionWithDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style;
++ (instancetype)transitionWithDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style;
 
 // Create transition with an near-infinite delay that requires manual dismissal via notification like this:
 // [[NSNotificationCenter defaultCenter] postNotificationName:GCOLaunchImageTransitionHideNotification object:self];)
 
-+ (void)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style;
++ (instancetype)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style;
 
 // Create fully customizable transition including an optional activity indicator
 // The 'activityIndicatorPosition' is a percentage value ('CGPointMake( 0.5, 0.5 )' being the center)
 // See https://github.com/gonecoding/GCOLaunchImageTransition for more documentation
 
-+ (void)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle;
++ (instancetype)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle;
+
++ (instancetype)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style progressBarPosition:(CGPoint)progressBarPosition progressBarWidth:(CGFloat)progressBarWidth;
 
 @end

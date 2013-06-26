@@ -32,12 +32,19 @@
 
 #import "GCOLaunchImageTransition.h"
 
+@interface GCOAppDelegate ()
+
+@property (nonatomic, assign) float progress;
+
+@end
+
+
 @implementation GCOAppDelegate
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
    // Choose a demo by setting values from 1 to 3
-   NSUInteger demo = 3;
+   NSUInteger demo = 4;
    
    switch( demo )
    {
@@ -70,8 +77,39 @@
 
          break;
       }
+
+      case 4:
+      {
+          GCOLaunchImageTransition *transition = [GCOLaunchImageTransition transitionWithInfiniteDelayAndDuration:0.5 style:GCOLaunchImageTransitionAnimationStyleZoomIn progressBarPosition:CGPointMake( 0.5, 0.9 ) progressBarWidth:0.5];
+          transition.progressLabel.font = [UIFont boldSystemFontOfSize:16];
+          transition.progressLabel.textColor = [UIColor purpleColor];
+          transition.progressView.trackTintColor = [UIColor lightGrayColor];
+          transition.progressView.progressTintColor = [UIColor purpleColor];
+
+          self.progress = 0.0;
+          NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateLaunchProgress:) userInfo:nil repeats:YES];
+          [timer fire];
+
+          [self performSelector:@selector(finishLaunchImageTransitionNow) withObject:nil afterDelay:6.0];
+          break;
+      }
    }
 }
+
+
+- (void)updateLaunchProgress:(NSTimer *)timer
+{
+    NSDictionary *userInfo = @{GCOLaunchImageTransitionProgressValue : @(self.progress), GCOLaunchImageTransitionProgressText:[NSString stringWithFormat:@"%u %%", (int)(self.progress * 100)]};
+    [[NSNotificationCenter defaultCenter] postNotificationName:GCOLaunchImageTransitionProgressNotification object:nil userInfo:userInfo];
+
+    if (self.progress >= 1.0f)
+    {
+        [timer invalidate];
+    }
+
+    self.progress += 0.002f;
+}
+
 
 - (void)finishLaunchImageTransitionNow
 {

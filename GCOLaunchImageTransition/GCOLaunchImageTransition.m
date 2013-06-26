@@ -31,6 +31,9 @@
 #import "GCOLaunchImageTransition.h"
 
 NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTransitionHideNotification";
+NSString* const GCOLaunchImageTransitionProgressNotification = @"GCOLaunchImageTransitionProgressNotification";
+NSString* const GCOLaunchImageTransitionProgressValue = @"GCOLaunchImageTransitionProgressValue";
+NSString* const GCOLaunchImageTransitionProgressText = @"GCOLaunchImageTransitionProgressText";
 
 @interface GCOLaunchImageTransition ()
 
@@ -45,32 +48,50 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
 
 @implementation GCOLaunchImageTransition
 
-+ (void)transitionWithDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style
++ (instancetype)transitionWithDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style
 {
-   [self transitionWithDelay:0.0 duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
+   return [self transitionWithDelay:0.0 duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
 }
 
-+ (void)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style
+
++ (instancetype)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style
 {
-   [self transitionWithDelay:GCOLaunchImageTransitionNearInfiniteDelay duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
+   return [self transitionWithDelay:GCOLaunchImageTransitionNearInfiniteDelay duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0];
 }
 
-+ (void)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
+
++ (instancetype)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
 {
-   static dispatch_once_t onceToken;
-   
-   dispatch_once( &onceToken, ^
-                 {
-                    UIWindow* window = [UIApplication sharedApplication].keyWindow;
-                    GCOLaunchImageTransition* transitionView = [[self alloc] initWithAnimationDelay:delay animationDuration:duration style:style activityIndicatorPosition:activityIndicatorPosition activityIndicatorStyle:activityIndicatorStyle];
-                    
-                    [window addSubview:transitionView.imageView];
-                 });
+    return [self transitionWithDelay:delay duration:duration style:style activityIndicatorPosition:activityIndicatorPosition activityIndicatorStyle:activityIndicatorStyle progressBarPosition:CGPointZero progressBarWidth:0.0f];
 }
+
+
++ (instancetype)transitionWithInfiniteDelayAndDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style progressBarPosition:(CGPoint)progressBarPosition progressBarWidth:(CGFloat)progressBarWidth
+{
+    return [self transitionWithDelay:GCOLaunchImageTransitionNearInfiniteDelay duration:duration style:style activityIndicatorPosition:CGPointZero activityIndicatorStyle:0 progressBarPosition:progressBarPosition progressBarWidth:progressBarWidth];
+}
+
+
++ (instancetype)transitionWithDelay:(NSTimeInterval)delay duration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle progressBarPosition:(CGPoint)progressBarPosition progressBarWidth:(CGFloat)progressBarWidth
+{
+    static GCOLaunchImageTransition *transitionView = nil;
+    static dispatch_once_t onceToken;
+
+    dispatch_once( &onceToken, ^
+    {
+        UIWindow* window = [UIApplication sharedApplication].keyWindow;
+        transitionView = [[self alloc] initWithAnimationDelay:delay animationDuration:duration style:style activityIndicatorPosition:activityIndicatorPosition activityIndicatorStyle:activityIndicatorStyle progressBarPosition:progressBarPosition progressBarWidth:progressBarWidth];
+
+        [window addSubview:transitionView.imageView];
+    });
+
+    return transitionView;
+}
+
 
 #pragma mark - Object life cycle
 
-- (id)initWithAnimationDelay:(NSTimeInterval)delay animationDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle
+- (id)initWithAnimationDelay:(NSTimeInterval)delay animationDuration:(NSTimeInterval)duration style:(GCOLaunchImageTransitionAnimationStyle)style activityIndicatorPosition:(CGPoint)activityIndicatorPosition activityIndicatorStyle:(UIActivityIndicatorViewStyle)activityIndicatorStyle progressBarPosition:(CGPoint)progressBarPosition progressBarWidth:(CGFloat)progressBarWidth
 {
    self = [super init];
 
@@ -99,6 +120,28 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
          
          [self.activityIndicatorView startAnimating];
       }
+      else if ( !CGPointEqualToPoint( progressBarPosition, CGPointZero) )
+      {
+          self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+
+          CGSize size = self.imageView.bounds.size;
+
+          CGRect frame = self.progressView.frame;
+          frame.size.width = size.width * progressBarWidth;
+          self.progressView.frame = frame;
+
+          self.progressView.center = CGPointMake( size.width * progressBarPosition.x, size.height * progressBarPosition.y );
+
+          self.progressLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+          self.progressLabel.lineBreakMode = UILineBreakModeMiddleTruncation;
+          self.progressLabel.numberOfLines = 1;
+          self.progressLabel.backgroundColor = [UIColor clearColor];
+
+          [self.imageView addSubview:self.progressView];
+          [self.imageView addSubview:self.progressLabel];
+
+          [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleProgressNotification:) name:GCOLaunchImageTransitionProgressNotification object:nil];
+      }
       
       // Start transition animation with given delay
       [self performSelector:@selector(performViewAnimations) withObject:nil afterDelay:self.delay];
@@ -115,7 +158,7 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
 #pragma mark - View animations
 
 - (void)performViewAnimations
-{
+{    
    if( self.activityIndicatorView )
    {
       [self.activityIndicatorView stopAnimating];
@@ -140,7 +183,25 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
     }];
 }
 
+
 #pragma mark - Handle notifications
+
+- (void)handleProgressNotification:(NSNotification*)notification
+{
+    if( [notification.name isEqualToString:GCOLaunchImageTransitionProgressNotification] )
+    {
+        float progress = [notification.userInfo[GCOLaunchImageTransitionProgressValue] floatValue];
+        self.progressView.progress = progress;
+
+        self.progressLabel.text = notification.userInfo[GCOLaunchImageTransitionProgressText];
+
+        CGRect frame = self.progressLabel.frame;
+        frame.size = [self.progressLabel sizeThatFits:CGSizeMake(frame.size.width, 10000)];
+        frame.origin = CGPointMake(self.progressView.frame.size.width - frame.size.width / 2, CGRectGetMaxY(self.progressView.frame) + 8);
+        self.progressLabel.frame = frame;
+    }
+}
+
 
 - (void)handleHideNotification:(NSNotification*)notification
 {
