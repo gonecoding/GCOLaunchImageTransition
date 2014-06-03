@@ -214,6 +214,14 @@ NSString* const GCOLaunchImageTransitionHideNotification = @"GCOLaunchImageTrans
    {
       NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
       NSString* launchImageName = [infoDict valueForKey:@"UILaunchImageFile"];
+
+      if (launchImageName == nil) {
+         // iOS 7+ default handling of Launch Images
+         NSArray* launchImagesArray = [infoDict objectForKey:@"UILaunchImages"];
+         if (launchImagesArray && [launchImagesArray count] > 0) {
+            launchImageName = [[launchImagesArray objectAtIndex:0] valueForKey:@"UILaunchImageName"];
+         }
+      }
       
       launchImage = [UIImage imageNamed:launchImageName];
    }
